@@ -10,14 +10,11 @@
 The task is to use tabular data of clinical and physiological measurements collected on horses to predict one of three outcomes:  lived, died or euthanized; using micro F1 score. 
 On the test set, the final model used- Random Forest with GridCV achieved a 76% micro‑F1 score—demonstrating a well‑balanced precision and recall, with comparison to the Kaggle leaderboard top of 78%.This project formulates the problem as classification task.
 
-
+_______________________________________________________________________________________________________________________________________________________________________________
 ## Approach
  * Compared the performance of three different models—Logistic Regression, Random Forest (with hyperparameter tuning), and XGBoost—using a micro‑averaged F1 score as the primary metric
  * Micro F1: weights every example equally, a good number to report when you care about your model’s overall accuracy on **imbalanced classes**
    
-## Summary of the performance achieved
-* The best model (Random Forest with GridSearchCV) achieved a test micro‑F1 score of **0.76** (placeholder) and demonstrated robust class balance performance.
-
 ### Data
 **Type:** 
     * Input: CSV files (`train.csv`, `test.csv`) containing 28 clinical features per horse.
@@ -48,7 +45,7 @@ On the test set, the final model used- Random Forest with GridCV achieved a 76% 
 #### Data Visualization
 
 * Explored outliers and distributions via boxplots and histograms of numerical features.  
-![Histogram](graph1.png)
+![Histogram](graph3.png)
 
 We can already visibly see outliers, and also notice how lesion 1 and 2 are not very important features to outcome and are so close to 0, which was handled while cleaning data
   
@@ -119,6 +116,8 @@ We can already visibly see outliers, and also notice how lesion 1 and 2 are not 
 ### Performance Comparison
 
 * The best model was RandomForest, it was even improved after cross validation score on the test set with a Test micro-F1: 0.7629
+
+  
 ![Model Performances](table.png)
 
   
