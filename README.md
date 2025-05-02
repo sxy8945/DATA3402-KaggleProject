@@ -45,7 +45,7 @@ ________________________________________________________________________________
 #### Data Visualization
 
 * Explored outliers and distributions via boxplots and histograms of numerical features.  
-![Histogram](graph3.png)
+![Histogram](graph1.png)
 
 We can already visibly see outliers, and also notice how lesion 1 and 2 are not very important features to outcome and are so close to 0, which was handled while cleaning data
   
@@ -100,6 +100,7 @@ We can already visibly see outliers, and also notice how lesion 1 and 2 are not 
   * XGBoost: ~ seconds
 
 ![RandomForest : Roc Curve](roccurve.png)
+
 * All three curves sit well above the diagonal, showing the model separates each outcome reliably. 
 * The AUCs (lived = 0.85, euthanized = 0.84, died = 0.83) mean it ranks true cases higher than false about 83–85% of the time.
 
