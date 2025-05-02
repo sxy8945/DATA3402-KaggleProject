@@ -1,27 +1,41 @@
 ![](UTA-DataScience-Logo.png)
 
 # Predict Health Outcomes of Horses
+
 * This repository holds an attempt to predict the health outcomes of horses using clinical and physiological data from the “Playground Series S3E22” Kaggle challenge.
 
 
 ## Overview
 
-* The task, as defined by the Kaggle challenge, is to use tabular data of clinical and physiological measurements collected on horses to predict one of three outcomes (lived, died, euthanized). 
-  * **Definition of the tasks / challenge** This project formulates the problem as a multiclass classification task.
-  * **Your approach**  We compared the performance of three different models—Logistic Regression, Random Forest (with hyperparameter tuning), and XGBoost—using a micro‑averaged F1 score as the primary metric
-  * **Summary of the performance achieved**  The best model (Random Forest with GridSearchCV) achieved a test micro‑F1 score of ** 0.76** (placeholder) and demonstrated robust class balance performance.
+The task is to use tabular data of clinical and physiological measurements collected on horses to predict one of three outcomes:  lived, died or euthanized; using micro F1 score. 
+On the test set, the final model used achieved a 76% micro‑F1 score—demonstrating a well‑balanced precision and recall, with comparison to the Kaggle leaderboard top of 78%.
 
-## Summary of Workdone
+**Definition of the tasks / challenge**:
+* This project formulates the problem as classification task.
+**Approach**
+ * Compared the performance of three different models—Logistic Regression, Random Forest (with hyperparameter tuning), and XGBoost—using a micro‑averaged F1 score as the primary metric
+ * Micro F1: weights every example equally, a good number to report when you care about your model’s overall accuracy on **imbalanced classes**
+**Summary of the performance achieved**
+* The best model (Random Forest with GridSearchCV) achieved a test micro‑F1 score of ** 0.76** (placeholder) and demonstrated robust class balance performance.
+
+
 
 ### Data
-
-* Data:
-  * Type: 
+**Type:** 
     * Input: CSV files (`train.csv`, `test.csv`) containing 28 clinical features per horse.
     * Output: Categorical “outcome” label with three classes: `lived`, `died`, `euthanized`.
-  * Size:
+**Size:**
   * Training Set : ~1,235 rows × 29 columns (28 features + target). 
   * Test Set : ~824 rows × 28 columns (features only).
+ **Type Counts:**
+-Numerical: 11 features
+-Categorical: 13 features
+-Binary: 4 features
+
+### Features :
+ * Numeric: vitals (temperature, pulse, respiratory rate), blood values (packed cell volume, total protein, abdominal fluid protein), and lesion codes.
+ * Binary : surgery, age, surgical lesion, CP data.
+ * Categorical exams: mucous membrane color, cap refill time, pain score, abdominal distention, nasogastric reflux, rectal feces appearance, etc.
 
 #### Preprocessing / Clean up
 
@@ -31,10 +45,13 @@
 * One‑hot encoded all categorical and binary columns using `pd.get_dummies()`.  
 * Ensured dummy columns were cast to integer type..
 
+
 #### Data Visualization
 
 * Explored outliers and distributions via boxplots and histograms of numerical features.  
 ![Histogram](graph1.png)
+
+We can already visibly see outliers, and also notice how lesion 1 and 2 are not very important features to outcome and are so close to 0, which was handled while cleaning data
   
 ### Problem Formulation
 
@@ -53,9 +70,18 @@
      * Scoring: micro‑averaged F1, 5‑fold cross‑validation  
   3. **XGBoost Classifier** (`objective='multi:softprob'`, 100 trees)
 
+  ![Confusion Matrix](Cm.png)
+
+* Micro F1: ~76% of all predictions are correct.
+-Died (0): 69/84 correct.
+-Euthanized (1): 20/30 correct.
+-Lived (2): 88/118 correct.
+
+
 **Loss & Optimizer**  
-* All models use their library defaults (log‑loss for LR & XGB, Gini impurity for RF).  
+* All models use their library defaults (log‑loss for LR & XGB,RF).  
 * Hyperparameter tuning guided by micro‑F1 scorer.
+  
 
 ### Training
 
@@ -77,7 +103,8 @@
   * XGBoost: ~ seconds
 
 ![RandomForest : Roc Curve](roccurve.png)
-
+* All three curves sit well above the diagonal, showing the model separates each outcome reliably. 
+* The AUCs (lived = 0.85, euthanized = 0.84, died = 0.83) mean it ranks true cases higher than false about 83–85% of the time.
 
 **Stopping Criteria**  
 * RF GridSearchCV runs full 5‑fold on all parameter combinations.  
