@@ -8,7 +8,7 @@
 ## Overview
 
 The task is to use tabular data of clinical and physiological measurements collected on horses to predict one of three outcomes:  lived, died or euthanized; using micro F1 score. 
-On the test set, the final model used achieved a 76% micro‑F1 score—demonstrating a well‑balanced precision and recall, with comparison to the Kaggle leaderboard top of 78%.This project formulates the problem as classification task.
+On the test set, the final model used- Random Forest with GridCV achieved a 76% micro‑F1 score—demonstrating a well‑balanced precision and recall, with comparison to the Kaggle leaderboard top of 78%.This project formulates the problem as classification task.
 
 
 ## Approach
