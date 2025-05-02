@@ -60,12 +60,13 @@ We can already visibly see outliers, and also notice how lesion 1 and 2 are not 
 
 **Models Tried**  
   1. **Logistic Regression** (baseline)  
-  2. **Random Forest Classifier**  
-* Hyperparameters tuned via `GridSearchCV` over  
-       * `n_estimators`: [100, 200, 300]  
-       * `max_depth`: [10, None]  
-       * `min_samples_split`: [5, 10]  
-       * `class_weight`: ['balanced']  
+  2. **Random Forest Classifier**
+
+* Hyperparameters tuned via `GridSearchCV` over
+* `n_estimators`: [100, 200, 300]  
+* `max_depth`: [10, None]  
+* `min_samples_split`: [5, 10]  
+* `class_weight`: ['balanced']  
      * Scoring: micro‑averaged F1, 5‑fold cross‑validation  
   3. **XGBoost Classifier** (`objective='multi:softprob'`, 100 trees)
 
