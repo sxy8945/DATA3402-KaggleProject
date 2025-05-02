@@ -8,17 +8,15 @@
 ## Overview
 
 The task is to use tabular data of clinical and physiological measurements collected on horses to predict one of three outcomes:  lived, died or euthanized; using micro F1 score. 
-On the test set, the final model used achieved a 76% micro‑F1 score—demonstrating a well‑balanced precision and recall, with comparison to the Kaggle leaderboard top of 78%.
+On the test set, the final model used achieved a 76% micro‑F1 score—demonstrating a well‑balanced precision and recall, with comparison to the Kaggle leaderboard top of 78%.This project formulates the problem as classification task.
 
-**Definition of the tasks / challenge**:
-* This project formulates the problem as classification task.
-**Approach**
+
+## Approach
  * Compared the performance of three different models—Logistic Regression, Random Forest (with hyperparameter tuning), and XGBoost—using a micro‑averaged F1 score as the primary metric
  * Micro F1: weights every example equally, a good number to report when you care about your model’s overall accuracy on **imbalanced classes**
-**Summary of the performance achieved**
-* The best model (Random Forest with GridSearchCV) achieved a test micro‑F1 score of ** 0.76** (placeholder) and demonstrated robust class balance performance.
-
-
+   
+## Summary of the performance achieved
+* The best model (Random Forest with GridSearchCV) achieved a test micro‑F1 score of **0.76** (placeholder) and demonstrated robust class balance performance.
 
 ### Data
 **Type:** 
@@ -27,6 +25,7 @@ On the test set, the final model used achieved a 76% micro‑F1 score—demonstr
 **Size:**
   * Training Set : ~1,235 rows × 29 columns (28 features + target). 
   * Test Set : ~824 rows × 28 columns (features only).
+    
  **Type Counts:**
 -Numerical: 11 features
 -Categorical: 13 features
