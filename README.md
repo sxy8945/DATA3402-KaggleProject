@@ -37,10 +37,15 @@ ________________________________________________________________________________
 
 #### Preprocessing / Clean up
 
+* Removed missing values from each column
+* Removed features that identify specific rows- 'id', 'hospital_number'
 * Collapsed three lesion columns into a single binary `lesion_present` feature.
-* Scaled using `RobustSCcaler`.
-* Log‑transformed skewed numerical variables via `np.log1p`.  
-* One‑hot encoded all categorical and binary columns using `pd.get_dummies()`.  
+* IQR‑based method in pure pandas to flag and count outliers in all numeric columns and handle:
+    *Scaled using `RobustSCcaler`.
+    *Log‑transformed skewed numerical variables via `np.log1p`.  
+* One‑hot encoded all categorical and binary columns using `pd.get_dummies()`.
+* Removed categorical features that were turned into one-hot.
+* Label encoded target column; died'→0, 'euthanized'→1, 'lived'→2
 * Ensured dummy columns were cast to integer type..
 
 _______________________________________________________________________________________________________________________________________________________________________________
