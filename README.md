@@ -55,7 +55,7 @@ ________________________________________________________________________________
 * Explored outliers and distributions via boxplots and histograms of numerical features.  
 ![Histogram](graph1.png)
 
-We can already visibly see outliers, and also notice how lesion 1 and 2 are not very important features to outcome and are so close to 0, which was handled while cleaning data
+
   
 ### Problem Formulation
 
