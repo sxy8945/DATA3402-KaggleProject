@@ -27,6 +27,8 @@ ________________________________________________________________________________
 -Numerical: 11 features
 -Categorical: 13 features
 -Binary: 4 features
+_______________________________________________________________________________________________________________________________________________________________________________
+
 
 ### Features :
  * Numeric: vitals (temperature, pulse, respiratory rate), blood values (packed cell volume, total protein, abdominal fluid protein), and lesion codes.
@@ -41,6 +43,7 @@ ________________________________________________________________________________
 * One‑hot encoded all categorical and binary columns using `pd.get_dummies()`.  
 * Ensured dummy columns were cast to integer type..
 
+_______________________________________________________________________________________________________________________________________________________________________________
 
 #### Data Visualization
 
@@ -74,17 +77,14 @@ We can already visibly see outliers, and also notice how lesion 1 and 2 are not 
 -Euthanized (1): 20/30 correct.
 -Lived (2): 88/118 correct.
 
+_______________________________________________________________________________________________________________________________________________________________________________
 
-**Loss & Optimizer**  
-* All models use their library defaults (log‑loss for LR & XGB,RF).  
-* Hyperparameter tuning guided by micro‑F1 scorer.
-  
 
 ### Training
 
 * **Environment**  
   * Python 3.8+  
-  * Libraries: `pandas`, `numpy`, `scikit-learn`, `xgboost`, `matplotlib`  
+  * Libraries: `pandas`, `numpy`, `scikit-learn`, `xgboost`, `matplotlib`,`seaborn`
   * Hardware: Local machine / Colab GPU (not strictly required)
    
  **Procedure**  
@@ -103,6 +103,7 @@ We can already visibly see outliers, and also notice how lesion 1 and 2 are not 
 
 * All three curves sit well above the diagonal, showing the model separates each outcome reliably. 
 * The AUCs (lived = 0.85, euthanized = 0.84, died = 0.83) mean it ranks true cases higher than false about 83–85% of the time.
+_______________________________________________________________________________________________________________________________________________________________________________
 
 **Stopping Criteria**  
 * RF GridSearchCV runs full 5‑fold on all parameter combinations.  
@@ -112,6 +113,7 @@ We can already visibly see outliers, and also notice how lesion 1 and 2 are not 
   * Moderate class imbalance—addressed via `class_weight='balanced'` and micro‑F1 scoring.  
   * Skewed distributions—handled via log transforms.
 
+_______________________________________________________________________________________________________________________________________________________________________________
 
 
 ### Performance Comparison
@@ -127,6 +129,7 @@ We can already visibly see outliers, and also notice how lesion 1 and 2 are not 
 * The tuned Random Forest delivered the highest micro‑averaged F1 score and balanced performance across all classes.  
 * Logistic regression was fast but underperformed on minority classes.  
 * XGBoost offered a trade‑off between performance and training time.
+_______________________________________________________________________________________________________________________________________________________________________________
 
 ### Future Work
 
@@ -135,10 +138,24 @@ We can already visibly see outliers, and also notice how lesion 1 and 2 are not 
 * Test ensemble stacking of RF + XGBoost + LR.  
 * Perform more extensive hyperparameter tuning (Bayesian optimization).
 
+_______________________________________________________________________________________________________________________________________________________________________________
 
+## Software Setup Steps:
+
+1. Clone the repository to your local machine.  
+2. Create and activate a Python virtual environment.  
+3. Install all required packages listed in requirements.txt.  
+4. Confirm that Python (≥ 3.8) and key libraries (pandas, scikit-learn, xgboost, matplotlib) are correctly installed.
+
+## How to Reproduce Results
+
+1. Download `train.csv` and `test.csv` from the Kaggle “Playground Series S3E22” competition page.  
+2. Place both data files in the project’s root directory.  
+3. Open the Jupyter notebook and execute every cell in sequence to preprocess data, train the models, and generate metrics and plots.  
+4. (Optional) Run the standalone preprocessing, training, evaluation, and submission scripts if preferred.  
+5. Review the printed metrics, examine the saved plots in the assets folder, and locate `submission.csv` in the project root.
 
 #### Performance Evaluation
-
 1. **Clone the repo**  
    ```bash
    git clone https://github.com/sxy8945/DATA3402-KaggleProject
